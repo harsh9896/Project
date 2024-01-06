@@ -20,6 +20,8 @@ public class Customer {
 	
 	private String dob;
 	
+	private String password;
+	
 	@ManyToMany(mappedBy = "customers")
 	private List<Articles> articles;
 
@@ -45,6 +47,14 @@ public class Customer {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getDob() {

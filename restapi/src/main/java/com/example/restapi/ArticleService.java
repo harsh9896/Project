@@ -19,9 +19,9 @@ public class ArticleService {
 	}
 
 	
-	public Boolean bought(int customerId, int articleId)
+	public Boolean bought(String customerName, int articleId)
 	{
-		List<Articles> articleList= customerRepository.findById(customerId).get().getArticles();
+		List<Articles> articleList= customerRepository.findByName(customerName).get().getArticles();
 		
 		return articleList.stream().anyMatch(article-> article.getId()==articleId);
 	}
@@ -32,9 +32,9 @@ public class ArticleService {
 	}
 
 
-	public boolean owns(int sellerId, int articleId) {
+	public boolean owns(String sellerName, int articleId) {
 		
-		List<Articles> articleList= sellerRepository.findById(sellerId).get().getArticles();
+		List<Articles> articleList= sellerRepository.findByName(sellerName).get().getArticles();
 		return articleList.stream().anyMatch(article-> article.getId()==articleId);
 	}
 }

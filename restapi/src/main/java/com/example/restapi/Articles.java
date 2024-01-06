@@ -31,6 +31,8 @@ public class Articles {
 	private String description;
 
 	private String name;
+	
+	
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JsonIgnore
