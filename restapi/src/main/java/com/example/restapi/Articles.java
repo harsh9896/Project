@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -32,7 +33,9 @@ public class Articles {
 
 	private String name;
 	
+	private String downloadURL;
 	
+	private String viewURL;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JsonIgnore
@@ -41,6 +44,9 @@ public class Articles {
 	@ManyToMany
 	@JsonIgnore
 	private List<Customer> customers;
+	
+	@OneToOne
+	private Attachment attachment;
 //	public Articles(int id, int price, String description, String name, Seller seller) {
 //		super();
 //		this.id = id;
@@ -84,12 +90,36 @@ public class Articles {
 		this.name = name;
 	}
 
+	public String getDownloadURL() {
+		return downloadURL;
+	}
+
+	public void setDownloadURL(String downloadURL) {
+		this.downloadURL = downloadURL;
+	}
+
+	public String getViewURL() {
+		return viewURL;
+	}
+
+	public void setViewURL(String viewURL) {
+		this.viewURL = viewURL;
+	}
+
 	public Seller getSeller() {
 		return seller;
 	}
 
 	public void setSeller(Seller seller) {
 		this.seller = seller;
+	}
+
+	public Attachment getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(Attachment attachment) {
+		this.attachment = attachment;
 	}
 
 	public List<Customer> getCustomers() {
